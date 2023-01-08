@@ -9,12 +9,27 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- LSP and autocompletion
+  use 'neovim/nvim-lspconfig'
+
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  use 'onsails/lspkind.nvim'
+
+  -- Prettier
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+
   -- File explorer
   use 'preservim/nerdtree'
   use 'ryanoasis/vim-devicons' -- File type icons
-
-  -- Code completion
-  use {'neoclide/coc.nvim', branch = 'release'}
 
   -- Color scheme
   use {'ellisonleao/gruvbox.nvim'}
@@ -33,17 +48,14 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
 
   -- Syntax highlighting
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+  use 'nvim-treesitter/nvim-treesitter'
 
   -- Auto closing
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
 
   -- Git integration
-  use 'tpope/vim-fugitive'
+  use 'dinhhuy258/git.nvim'
 
   use 'Pocco81/auto-save.nvim'
 
