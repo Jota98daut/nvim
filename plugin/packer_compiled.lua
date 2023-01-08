@@ -214,6 +214,11 @@ _G.packer_plugins = {
     path = "/home/joel/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
   },
+  vimtex = {
+    loaded = true,
+    path = "/home/joel/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
   ["web-tools.nvim"] = {
     loaded = true,
     path = "/home/joel/.local/share/nvim/site/pack/packer/start/web-tools.nvim",

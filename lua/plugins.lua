@@ -66,4 +66,6 @@ return require('packer').startup(function(use)
 
   -- Live server for web development
   use 'ray-x/web-tools.nvim'
+
+  use 'lervag/vimtex'
 end)
