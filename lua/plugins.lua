@@ -3,14 +3,20 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  use 'nvim-lua/plenary.nvim'
+  use 'williamboman/mason.nvim' -- Package Manager
+  use 'williamboman/mason-lspconfig.nvim' -- Integration between Mason and LSPConfig
+  use 'neovim/nvim-lspconfig' -- Language Server Protocol
+  use 'mfussenegger/nvim-dap' -- Debug Adapter Protocol
+  use 'jose-elias-alvarez/null-ls.nvim' -- Formatter and linter
+
   -- Status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  -- LSP and autocompletion
-  use 'neovim/nvim-lspconfig'
+  -- Autocompletion
 
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -24,7 +30,6 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
 
   -- Prettier
-  use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
   -- File explorer
