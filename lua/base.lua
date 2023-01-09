@@ -20,6 +20,11 @@ opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
 
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartindent = true
+
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight
