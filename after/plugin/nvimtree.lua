@@ -1,6 +1,6 @@
-local ok, nvimtree = pcall(require, "nvim-tree")
+local ok, nvimtree = pcall(require, 'nvim-tree')
 if not ok then
-	return
+  return
 end
 
 nvimtree.setup()

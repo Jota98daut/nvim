@@ -1,4 +1,4 @@
-vim.o.background = "dark"
-vim.cmd("colorscheme gruvbox")
+vim.o.background = 'dark'
+vim.cmd('colorscheme gruvbox')
 
-require("gruvbox").setup()
+require('gruvbox').setup()

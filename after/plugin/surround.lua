@@ -1,6 +1,6 @@
-local ok, surround = pcall(require, "nvim-surround")
+local ok, surround = pcall(require, 'nvim-surround')
 if not ok then
-	return
+  return
 end
 
 surround.setup()
