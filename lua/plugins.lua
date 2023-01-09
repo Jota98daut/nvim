@@ -49,4 +49,6 @@ return require('packer').startup(function(use)
   use('windwp/nvim-autopairs')
 
   use('jose-elias-alvarez/null-ls.nvim')
+
+  use('lervag/vimtex')
 end)
