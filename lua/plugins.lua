@@ -1,48 +1,52 @@
-return require('packer').startup(
-  function(use)
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
 
-    use 'ellisonleao/gruvbox.nvim' --Colorscheme
+	use("ellisonleao/gruvbox.nvim") --Colorscheme
 
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 
-    use 'folke/which-key.nvim'
+	use("folke/which-key.nvim")
 
-    use {
-      'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' },
-      tag = 'nightly'
-    }
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		tag = "nightly",
+	})
 
-    use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
-    -- Completion
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'amarakon/nvim-cmp-lua-latex-symbols' -- For LaTeX symbols
+	-- Completion
+	use("neovim/nvim-lspconfig")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("amarakon/nvim-cmp-lua-latex-symbols") -- For LaTeX symbols
 
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-    -- Fuzzy finder
-    use {
-      'nvim-telescope/telescope.nvim', branch = '0.1.x',
-      requires = {
-        { 'nvim-lua/plenary.nvim' },
-        { 'BurntSushi/ripgrep' },
-        { 'nvim-telescope/telescope-fzf-native.nvim',
-          run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-        { 'nvim-tree/nvim-web-devicons' },
-      }
-    }
+	-- Fuzzy finder
+	use({
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "BurntSushi/ripgrep" },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
+			{ "nvim-tree/nvim-web-devicons" },
+		},
+	})
 
-    use 'onsails/lspkind.nvim'
+	use("onsails/lspkind.nvim")
 
-    use { 'kylechui/nvim-surround', tag = '*', }
-    use 'windwp/nvim-autopairs'
-  end
-)
+	use({ "kylechui/nvim-surround", tag = "*" })
+	use("windwp/nvim-autopairs")
+
+	use("jose-elias-alvarez/null-ls.nvim")
+end)

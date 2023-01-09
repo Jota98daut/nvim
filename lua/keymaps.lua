@@ -13,4 +13,4 @@ keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Toggle Nvim Tree
-keymap('n', '<C-t>', ':NvimTreeToggle<Return>', default_opts)
+keymap("n", "<Leader>tt", ":NvimTreeToggle<CR>", default_opts)
