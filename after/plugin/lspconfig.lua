@@ -1,14 +1,15 @@
 local ok, lspconfig = pcall(require, 'lspconfig')
 if not ok then
-  return
-end
-local cmp_nvim_lsp
+  return end local cmp_nvim_lsp
 ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
   return
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
+
+local emmet_capabilities = vim.lsp.protocol.make_client_capabilities()
+emmet_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -49,6 +50,16 @@ lspconfig.sumneko_lua.setup({
 })
 
 lspconfig.texlab.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.emmet_ls.setup({
+  on_attach = on_attach,
+  capabilities = emmet_capabilities,
+})
+
+lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })

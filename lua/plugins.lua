@@ -51,4 +51,8 @@ return require('packer').startup(function(use)
   use('jose-elias-alvarez/null-ls.nvim')
 
   use('lervag/vimtex')
+
+  use('Pocco81/auto-save.nvim')
+
+  use('ray-x/web-tools.nvim')
 end)
