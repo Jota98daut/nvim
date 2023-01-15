@@ -1,6 +1,8 @@
 local ok, lspconfig = pcall(require, 'lspconfig')
 if not ok then
-  return end local cmp_nvim_lsp
+  return
+end
+local cmp_nvim_lsp
 ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
   return
@@ -62,4 +64,10 @@ lspconfig.emmet_ls.setup({
 lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+lspconfig.hls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
 })
