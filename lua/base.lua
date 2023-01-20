@@ -7,23 +7,43 @@ api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-opt.termguicolors = true -- Enable colors in terminal
-opt.hlsearch = true --Set highlight on search
-opt.number = true --Make line numbers default
-opt.relativenumber = true --Make relative number default
+-- Indent options
+opt.autoindent = true -- New lines inherit the indentation of previous lines
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smarttab = true -- Insert tabstop number of spaces when pressing Tab
+opt.tabstop = 2
+opt.smartindent = true
+
+-- Search options
+opt.hlsearch = false -- Unset highlight on search
+opt.ignorecase = true --Case insensitive searching unless /C or capital in search
+opt.smartcase = true -- Switch to case-sensitive when query contains an uppercase letter
+
+-- UI options
+opt.ruler = true;
+opt.cursorline = true; -- Highlight current line
+opt.number = true -- Make line numbers default
+opt.relativenumber = true -- Make relative number default
+opt.errorbells = true -- Disable bell sound on errors
+opt.visualbell = true -- Flash screen instead of beeping on errors
 opt.mouse = 'a' --Enable mouse mode
+opt.termguicolors = true -- Enable colors in terminal
+opt.wrap = false
+
+-- Code folding options
+opt.foldmethod = 'indent' -- Fold based on indentation levels
+opt.foldnestmax = 3 -- Only fold up to n nested levels
+opt.foldenable = false -- Disable folding by default
+
+-- Miscellaneous options
 opt.breakindent = true --Enable break indent
 opt.undofile = true --Save undo history
-opt.ignorecase = true --Case insensitive searching unless /C or capital in search
-opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = 'yes' -- Always show sign column
 -- opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.list = true
 
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.smartindent = true
 
 -- Highlight on yank
 vim.cmd([[
