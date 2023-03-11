@@ -7,13 +7,20 @@ keymap('i', 'jk', '<ESC>', default_opts)
 keymap('t', 'jk', '<C-\\><C-n>', default_opts)
 
 -- Resizing panes
-keymap('n', '<Left>'  , ':vertical resize +1<CR>', default_opts)
-keymap('n', '<Right>' , ':vertical resize -1<CR>', default_opts)
-keymap('n', '<Up>'    , ':resize -1<CR>', default_opts)
-keymap('n', '<Down>'  , ':resize +1<CR>', default_opts)
+keymap('n', '<Left>', ':vertical resize +1<CR>', default_opts)
+keymap('n', '<Right>', ':vertical resize -1<CR>', default_opts)
+keymap('n', '<Up>', ':resize -1<CR>', default_opts)
+keymap('n', '<Down>', ':resize +1<CR>', default_opts)
 
 -- Toggle Nvim Tree
 keymap('n', '<Leader>tt', ':NvimTreeToggle<CR>', default_opts)
 
 -- Select all
-keymap('n' , '<C-a>', '<ESC>ggVG', default_opts)
+keymap('n', '<C-a>', '<ESC>ggVG', default_opts)
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, default_opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, default_opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, default_opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, default_opts)

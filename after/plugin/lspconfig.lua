@@ -1,29 +1,20 @@
-local ok, lspconfig = pcall(require, 'lspconfig')
-if not ok then
-  return
-end
-local cmp_nvim_lsp
-ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not ok then
-  return
-end
+local ok_lspconfig, lspconfig = pcall(require, 'lspconfig')
+local ok_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local ok_mason, mason = pcall(require, 'mason')
+local ok_mason_lspconfig, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not (ok_lspconfig and ok_cmp_nvim_lsp and ok_mason and ok_mason_lspconfig) then return end
+
+mason.setup()
+mason_lspconfig.setup()
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 local emmet_capabilities = vim.lsp.protocol.make_client_capabilities()
 emmet_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -66,8 +57,28 @@ lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
-lspconfig.hls.setup({
+lspconfig.ccls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.hls.setup({ -- Haskell Language Server
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { 'haskell', 'lhaskell', 'cabal' },
+})
+
+lspconfig.rust_analyzer.setup({ -- Rust Language Server
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.bashls.setup({ -- Bash Language Server
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.ruby_ls.setup({ -- Ruby Language Server
+  on_attach = on_attach,
+  capabilities = capabilities,
 })

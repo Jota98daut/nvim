@@ -15,8 +15,12 @@ return require('packer').startup(function(use)
 
   use({ 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } })
 
-  -- Completion
+  -- LSP support
+  use('williamboman/mason.nvim')
+  use('williamboman/mason-lspconfig.nvim')
   use('neovim/nvim-lspconfig')
+
+  -- Completion
   use('hrsh7th/cmp-nvim-lsp')
   use('hrsh7th/cmp-buffer')
   use('hrsh7th/cmp-path')

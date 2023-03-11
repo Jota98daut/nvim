@@ -30,6 +30,7 @@ opt.visualbell = true -- Flash screen instead of beeping on errors
 opt.mouse = 'a' --Enable mouse mode
 opt.termguicolors = true -- Enable colors in terminal
 opt.wrap = false
+opt.scrolloff = 5 -- Add margin to top/bottom of the file
 
 -- Code folding options
 opt.foldmethod = 'indent' -- Fold based on indentation levels

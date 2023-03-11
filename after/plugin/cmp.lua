@@ -1,10 +1,15 @@
-local ok, cmp = pcall(require, 'cmp')
-local lspkind = require('lspkind')
-if not ok then
-  return
-end
+local ok_cmp    , cmp     = pcall(require, 'cmp')
+local ok_luasnip, luasnip = pcall(require, 'luasnip')
+local ok_lspkind, lspkind = pcall(require, 'lspkind')
+if not ok_cmp and ok_luasnip and ok_lspkind then return end
 
 vim.opt.completeopt = 'menu,menuone,noselect'
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 cmp.setup({
   formatting = {
@@ -16,7 +21,7 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -29,6 +34,31 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+    -- Super-Tab
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+      -- they way you will only jump inside the snippet region
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -38,3 +68,5 @@ cmp.setup({
     { name = 'buffer' },
   }),
 })
+
+require("luasnip.loaders.from_vscode").lazy_load()
